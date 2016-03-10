@@ -6,15 +6,15 @@ This transactions API handles the request from the market client of Paint Market
 
 ## Dependencies
 
-express
-supertest
-body-parser
-tape
+* express
+* supertest
+* body-parser
+* tape
 
 
 ##1. Create a new transactions
 
-Creates a new transaction JSON object containing the transaction ID, the owner, buyer, painting and price information involved in a transaction. Returns a boolean value indicating a transaction object has been created.
+Creates a new transaction JSON object containing the transaction ID, the owner, buyer, painting and price information involved in a transaction. Returns a JSON object with the newly added transaction object.
 
 ###Example.
 
