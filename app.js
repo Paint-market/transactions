@@ -13,9 +13,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', routes);
-//app.use('/transactions', transactions);
+app.use('/v1/transactions', transactions);
 
-//
+
 
 
 
