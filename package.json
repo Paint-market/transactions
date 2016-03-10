@@ -1,0 +1,24 @@
+{
+  "name": "transactions",
+  "version": "1.0.0",
+  "description": "Transactions server for Paint Market",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Paint-market/transactions.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Paint-market/transactions/issues"
+  },
+  "homepage": "https://github.com/Paint-market/transactions#readme",
+  "dependencies": {
+    "supertest": "^1.2.0",
+    "tape": "^4.5.1"
+  }
+}
