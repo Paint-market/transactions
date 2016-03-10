@@ -68,10 +68,9 @@ res:   {[{transID: 21, ownerID:55, buyerID: 656, paintID: 12, cost: 500, success
        {transID: 89, ownerID:55, buyerID: 19, paintID: 92, cost: 200, success: true} ] }
 
 
+# transactions
+Transactions server for Paint Market
 
-
-
-
-
-
+# URL
+App is deployed to https://paint-market-transactions.herokuapp.com/ . App will be re-deployed automatically whenever there is a pull request accepted into master that passes all the tests.
 
