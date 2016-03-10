@@ -26,7 +26,7 @@ var transactions = {
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   var transactionResult = {}
-  if (!req.query == {}){ //fix this
+  if (Object.getOwnPropertyNames(req.query).length === 0){ //fix this
     transactionResult = transactions
   } else {
     var filteredResults = []
