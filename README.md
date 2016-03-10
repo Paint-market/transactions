@@ -1,4 +1,4 @@
-#Tansactions got Paint Market API
+#Transactions got Paint Market API
 Version 1.0
 
 
