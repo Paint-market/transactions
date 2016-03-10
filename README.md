@@ -4,7 +4,7 @@ Version 1.0
 
 This transactions API handles the request from the market client of Paint Market, verifies the validity with user client and send response to the controller.
 
-# Dependencies
+## Dependencies
 
 express
 supertest
@@ -12,17 +12,17 @@ body-parser
 tape
 
 
-#1. Create a new transactions
+##1. Create a new transactions
 
 Creates a new transaction JSON object containing the transaction ID, the owner, buyer, painting and price information involved in a transaction. Returns a boolean value indicating a transaction object has been created.
 
-Example.
+###Example.
 
  POST /v1/transactions/
 
 
 
-# 2. Get all transactions
+## 2. Get all transactions
 
 Returns an object containing an array of every transaction object.
 
@@ -59,7 +59,7 @@ res:
           ]
         }
 
-# 3. Query a transaction
+## 3. Query a transaction
 
 Returns a transaction by ID, or a list of transactions by buyerID, ownerID or paintingID.
 
@@ -67,7 +67,7 @@ Returns a transaction by ID, or a list of transactions by buyerID, ownerID or pa
 
  Error  404  ID not found
 
-Example.
+###Examples
 
 req: GET /v1/tansactions/1
 
