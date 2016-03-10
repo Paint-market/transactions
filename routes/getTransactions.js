@@ -5,7 +5,7 @@ var transactions = {
   "transactions": [
     {
       "buyerID": 1,
-      "ownerID": 2,
+      "ownerID": 3,
       "paintingID": 1,
       "price": 100
     },
@@ -26,18 +26,19 @@ var transactions = {
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   var transactionResult = {}
-  if (Object.getOwnPropertyNames(req.query).length === 0){ //fix this
+  var searchParams = Object.keys(req.query)
+  console.log('searchParams: ', searchParams)
+  if (searchParams.length === 0){
     transactionResult = transactions
   } else {
     var filteredResults = []
     transactions.transactions.forEach(function(transaction){
-      if(transaction.paintingID === Number(req.query.paintingID)){
+      if(transaction[searchParams[0]] === Number(req.query[searchParams[0]])){
         filteredResults.push(transaction)
       }
     })
-    Object.defineProperty(transactionResult, 'propertyID', {
-      value: filteredResults
-    })
+    console.log('filteredResults: ',filteredResults)
+    transactionResult["transactions"] = filteredResults
   }
   console.log(transactionResult)
   res.json(transactionResult);

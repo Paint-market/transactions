@@ -4,7 +4,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var transactions = require('./routes/transactions');
+var transactions = require('./routes/getTransactions');
 
 var app = express();
 

@@ -20,24 +20,26 @@ test('get v1/transactions filtered by paintingID', function(t){
       .expect(200)
       .end(function(err, res){
         t.false(err, 'no error for false')
+        console.log(res.body)
         //need to wait for structure to be decided
        // t.deepEqual(res.body.transactions['paintingID'], 3, "returns all transaction with painting id 3")
         t.end()
       })
 })
 
-// test('get v1/transactions filtered by ownerID', function(t){
-// request(app)
-//       .get('/v1/transactions')
-//       .query({ownerID: '3'})
-//       .expect(200)
-//       .end(function(err, res){
-//         t.false(err)
-//         //need to wait for structure to be decided
-//         t.deepEqual(res.body.transactions[ownerID], 3, "returns all sales transactions for this user")
-//         t.end()
-//       })
-// })
+test('get v1/transactions filtered by ownerID', function(t){
+request(app)
+      .get('/v1/transactions')
+      .query({ownerID: '3'})
+      .expect(200)
+      .end(function(err, res){
+        t.false(err)
+        console.log(res.body)
+        //need to wait for structure to be decided
+        //t.deepEqual(res.body.transactions[ownerID], 3, "returns all sales transactions for this user")
+        t.end()
+      })
+})
 
 // test('get v1/transactions filtered by buyerID', function(t){
 // request(app)
