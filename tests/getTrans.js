@@ -8,7 +8,8 @@ test('get v1/transactions/', function(t){
     .expect(200)
     .end(function(err, res){
       t.false(err, 'no error for false')
-      t.true(res.body.hasOwnProperty('transactions'), 'res.body returns an object that has a property called trans')
+      t.true(res.body.hasOwnProperty('transactions'), 'res.body returns an object that has a property called transactions')
+      t.equal(res.body.transactions.length, 4, "returns all transactions")
       t.end()
     })
 })
@@ -20,9 +21,7 @@ test('get v1/transactions filtered by paintingID', function(t){
       .expect(200)
       .end(function(err, res){
         t.false(err, 'no error for false')
-        console.log(res.body)
-        //need to wait for structure to be decided
-       // t.deepEqual(res.body.transactions['paintingID'], 3, "returns all transaction with painting id 3")
+        t.equal(res.body.transactions.length, 2, "returns all transaction with painting id 3")
         t.end()
       })
 })
@@ -33,36 +32,32 @@ request(app)
       .query({ownerID: '3'})
       .expect(200)
       .end(function(err, res){
-        t.false(err)
-        console.log(res.body)
-        //need to wait for structure to be decided
-        //t.deepEqual(res.body.transactions[ownerID], 3, "returns all sales transactions for this user")
+        t.false(err, 'no error returned')
+        t.deepEqual(res.body.transactions.length, 2, "returns all sales transactions for this user")
         t.end()
       })
 })
 
-// test('get v1/transactions filtered by buyerID', function(t){
-// request(app)
-//       .get('/v1/transactions')
-//       .query({buyerID: '3'})
-//       .expect(200)
-//       .end(function(err, res){
-//         t.false(err)
-//         //need to wait for structure to be decided
-//         t.deepEqual(res.body.transactions[buyerID], 3, "returns all purchase transactions for this user")
-//         t.end()
-//       })
-// })
+test('get v1/transactions filtered by buyerID', function(t){
+request(app)
+      .get('/v1/transactions')
+      .query({buyerID: '3'})
+      .expect(200)
+      .end(function(err, res){
+        t.false(err, 'no error returned')
+        t.deepEqual(res.body.transactions.length, 2, "returns all purchase transactions for this user")
+        t.end()
+      })
+})
 
-// test('get v1/transactions filtered by buyerID and ownerID', function(t){
-// request(app)
-//       .get('/v1/transactions')
-//       .query({buyerID: '3', ownerID: '3'})
-//       .expect(200)
-//       .end(function(err, res){
-//         t.false(err)
-//         //need to wait for structure to be decided
-//         t.deepEqual(res.body.transactions[buyerID] ,3, "returns all purchase and sales transactions for this user")
-//         t.end()
-//       })
-// })
+test('get v1/transactions filtered by buyerID and ownerID', function(t){
+request(app)
+      .get('/v1/transactions')
+      .query({buyerID: '3', ownerID: '3'})
+      .expect(200)
+      .end(function(err, res){
+        t.false(err, 'no error returned')
+        t.deepEqual(res.body.transactions.length, 4, "returns all purchase and sales transactions for this user")
+        t.end()
+      })
+})

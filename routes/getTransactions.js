@@ -20,6 +20,12 @@ var transactions = {
       "ownerID": 3,
       "paintingID": 3,
       "price": 200
+    },
+    {
+      "buyerID": 3,
+      "ownerID": 5,
+      "paintingID": 9,
+      "price": 50
     }
 ]}
 
@@ -27,20 +33,19 @@ var transactions = {
 router.get('/', function(req, res, next) {
   var transactionResult = {}
   var searchParams = Object.keys(req.query)
-  console.log('searchParams: ', searchParams)
   if (searchParams.length === 0){
     transactionResult = transactions
   } else {
     var filteredResults = []
     transactions.transactions.forEach(function(transaction){
-      if(transaction[searchParams[0]] === Number(req.query[searchParams[0]])){
-        filteredResults.push(transaction)
+      for (var i = 0; i < searchParams.length; i++){
+        if(transaction[searchParams[i]] === Number(req.query[searchParams[i]])){
+          filteredResults.push(transaction)
+        }
       }
     })
-    console.log('filteredResults: ',filteredResults)
     transactionResult["transactions"] = filteredResults
   }
-  console.log(transactionResult)
   res.json(transactionResult);
 });
 
