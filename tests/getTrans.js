@@ -51,3 +51,16 @@ request(filename)
         t.end()
       })
 })
+
+test('get v1/transactions filtered by buyerID and ownerID', function(t){
+request(filename)
+      .get('/v1/transactions')
+      .query({buyerID: '3', ownerID: '3'})
+      .expect(200)
+      end(function(err, res){
+        t.false(err)
+        //need to wait for structure to be decided
+        t.deepEqual(res.body.transactions[buyerID] ,3, "returns all purchase and sales transactions for this user")
+        t.end()
+      })
+})
