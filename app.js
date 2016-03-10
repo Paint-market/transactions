@@ -4,7 +4,8 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var transactions = require('./routes/transactions');
+var trans_get = require('./routes/v1/getTransactions');
+var trans_post = require('./routes/v1/postTransactions');
 
 var app = express();
 
@@ -14,7 +15,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', routes);
 
-app.use('/v1/transactions', transactions);
+app.use('/v1/transactions', trans_post);
+
 
 
 
