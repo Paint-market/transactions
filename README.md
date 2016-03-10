@@ -48,11 +48,17 @@ res:     {transID: 1, ownerID:11, buyerID: 3, paintID: 62, cost: 500, success: t
 
 
 
+
+
 req:  GET /v1/tansactions/paintID=65
 
 res: {[{transID: 1, ownerID:55, buyerID: 6, paintID: 65, cost: 500, success: true},
      {transID: 5, ownerID:6, buyerID: 3, paintID: 65, cost: 400, success: true},
      {transID: 9, ownerID:3, buyerID: 19, paintID: 65, cost: 900, success: true} ] }
+
+
+
+
 
 
 req:  GET /v1/tansactions/ownerID=55
