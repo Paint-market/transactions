@@ -61,3 +61,16 @@ request(app)
         t.end()
       })
 })
+
+test('if filterd results returns an empty object, throw error ', function(t){
+request(app)
+      .get('/v1/transactions')
+      .query({buyerID: '900'})
+      .expect(404)
+      .end(function(err, res){
+        t.false(err, "this is the correct error code")
+        t.deepEqual(res.text, 'invalid search parameters', "the response detected invalid search perameters")
+        t.end()
+      })
+})
+
