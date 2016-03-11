@@ -7,14 +7,34 @@
     "test": "node test/**.js"
   },
   "dependencies": {
-    "body-parser": "~1.13.2",
-    "debug": "~2.2.0",
-    "express": "~4.13.1",
-    "morgan": "~1.6.1"
+    "body-parser": "^1.13.3",
+    "debug": "^2.2.0",
+    "express": "^4.13.4",
+    "morgan": "^1.6.1",
+    "supertest": "^1.2.0",
+    "tape": "^4.5.1"
   },
   "devDependencies": {
-    "tape": "^4.5.1",
-    "supertest": "^1.2.0"
+    "tape": "^4.5.1"
+
+  },
+  "description": "[![Stories in Ready](https://badge.waffle.io/Paint-market/transactions.png?label=ready&title=Ready)](https://waffle.io/Paint-market/transactions) # transactions Transactions server for Paint Market",
+  "main": "app.js",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Paint-market/transactions.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Paint-market/transactions/issues"
+  },
+  "homepage": "https://github.com/Paint-market/transactions#readme"
+
+
 
   }
-}

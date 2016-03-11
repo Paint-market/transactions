@@ -7,7 +7,7 @@ var transactions = {
       "buyerID": 1,
       "ownerID": 3,
       "paintingID": 1,
-      "price": 100
+
     },
     {
       "buyerID": 3,
@@ -48,5 +48,26 @@ router.get('/', function(req, res, next) {
   }
   res.json(transactionResult);
 });
+
+
+/* POST new listing*/
+router.post('/', function(req, res, next) {
+  var newTransaction = req.body
+  var viable = true;
+  for (var property in newTransaction) {
+    if (isNaN(newTransaction[property]) || typeof newTransaction[property] != 'number') {
+      viable = false
+      res.status(404).send('This transaction has wrong ' + property + ' value. Value entered is ' + newTransaction[property])
+    }
+  }
+  if (viable){
+  newTransaction["transactionID"] = transactions.transactions.length+1
+  transactions.transactions.push(newTransaction)
+  res.json(newTransaction)
+  }
+});
+
+
+
 
 module.exports = router;
