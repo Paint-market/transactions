@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var fs = require('fs')
 
 var routes = require('./routes/index');
 var transactions = require('./routes/getTransactions');

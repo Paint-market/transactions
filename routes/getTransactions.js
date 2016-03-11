@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var fs = require('fs')
 
 var transactions = {
   "transactions": [
@@ -29,8 +30,13 @@ var transactions = {
     }
 ]}
 
-/* GET users listing. */
+/* GET transactions list. */
 router.get('/', function(req, res, next) {
+  //read object in from file
+  fs.readFile('DB.json','utf8', function(err, data){
+    console.log(data, 'test')
+  })
+  //
   var transactionResult = {}
   var searchParams = Object.keys(req.query)
   if (searchParams.length === 0){
