@@ -4,25 +4,25 @@ Version 1.0
 
 This transactions API handles the request from the market client of Paint Market, verifies the validity with user client and send response to the controller.
 
-# Dependencies
+## Dependencies
 
-express
-supertest
-body-parser
-tape
+* express
+* supertest
+* body-parser
+* tape
 
 
-#1. Create a new transactions
+##1. Create a new transactions
 
-Creates a new transaction JSON object containing the transaction ID, the owner, buyer, painting and price information involved in a transaction. Returns a boolean value indicating a transaction object has been created.
+Creates a new transaction JSON object containing the transaction ID, the owner, buyer, painting and price information involved in a transaction. Returns a JSON object with the newly added transaction object.
 
-Example.
+###Example.
 
  POST /v1/transactions/
 
 
 
-# 2. Get all transactions
+## 2. Get all transactions
 
 Returns an object containing an array of every transaction object.
 
@@ -30,42 +30,108 @@ req: GET /v1/transactions
 
 res:
 
-  transactions: { [ {transID: 1, ownerID:1, buyerID: 3, paintID: 625, cost: 500, success: true},   {transID: 2, ownerID:34, buyerID: 43, paintID: 25, cost: 100, success: false } ] }
+        {
+          transactions: [
+            {
+              buyerID: 1,
+              ownerID: 3,
+              paintingID: 1,
+              price: 100
+            },
+            {
+              buyerID: 3,
+              ownerID: 2,
+              paintingID: 3,
+              price: 50
+            },
+            {
+              buyerID: 1,
+              ownerID: 3,
+              paintingID: 3,
+              price: 200
+            },
+            {
+              buyerID: 3,
+              ownerID: 5,
+              paintingID: 9,
+              price: 50
+            }
+          ]
+        }
 
-# 3. Query a transaction
+## 3. Query a transaction
 
-Returns a transaction by ID, or a list of transations by buyer, owner or painting.
+Returns a transaction by ID, or a list of transactions by buyerID, ownerID or paintingID.
 
  Status 200 OK
 
  Error  404  ID not found
 
-Example.
+###Examples
 
 req: GET /v1/tansactions/1
 
-res:     {transID: 1, ownerID:11, buyerID: 3, paintID: 62, cost: 500, success: true}
+res:     {transID: 1, ownerID:11, buyerID: 3, paintingID: 62, cost: 500, success: true}
 
 
 
+**Get all transactions for paintingID 3**
 
+req:  GET /v1/tansactions/?paintingID=3
 
-req:  GET /v1/tansactions/paintID=65
+res:
 
-res: {[{transID: 1, ownerID:55, buyerID: 6, paintID: 65, cost: 500, success: true},
-     {transID: 5, ownerID:6, buyerID: 3, paintID: 65, cost: 400, success: true},
-     {transID: 9, ownerID:3, buyerID: 19, paintID: 65, cost: 900, success: true} ] }
+          {
+            transactions: [
+              {
+                buyerID: 3,
+                ownerID: 2,
+                paintingID: 3,
+                price: 50
+              },
+              {
+                buyerID: 1,
+                ownerID: 3,
+                paintingID: 3,
+                price: 200
+              }
+            ]
+          }
 
+**Get all sale & purchase transactions for userID 3**
 
+req:  GET /v1/tansactions/?buyerID=3&ownerID=3
 
+res:
 
-
-
-req:  GET /v1/tansactions/ownerID=55
-
-res:   {[{transID: 21, ownerID:55, buyerID: 656, paintID: 12, cost: 500, success: true},
-       {transID: 95, ownerID:55, buyerID: 32, paintD: 72, cost: 400, success: true},
-       {transID: 89, ownerID:55, buyerID: 19, paintID: 92, cost: 200, success: true} ] }
+          {
+            transactions: [
+              {
+                buyerID: 1,
+                ownerID: 3,
+                paintingID: 1,
+                price: 100
+              },
+              {
+                buyerID: 3,
+                ownerID: 2,
+                paintingID: 3,
+                price: 50
+              },
+              {
+                buyerID: 1,
+                ownerID: 3,
+                paintingID: 3,
+                price: 200
+              },
+              {
+                buyerID: 3,
+                ownerID: 5,
+                paintingID: 9,
+                price: 50
+              }
+            ]
+          }
 
 
 # transactions
