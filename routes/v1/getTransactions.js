@@ -5,7 +5,7 @@ var transactions = {
   "transactions": [
     {
       "buyerID": 1,
-      "ownerID": 2,
+      "ownerID": 3,
       "paintingID": 1,
       "price": 100
     },
@@ -20,26 +20,32 @@ var transactions = {
       "ownerID": 3,
       "paintingID": 3,
       "price": 200
+    },
+    {
+      "buyerID": 3,
+      "ownerID": 5,
+      "paintingID": 9,
+      "price": 50
     }
 ]}
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   var transactionResult = {}
-  if (Object.getOwnPropertyNames(req.query).length === 0){ //fix this
+  var searchParams = Object.keys(req.query)
+  if (searchParams.length === 0){
     transactionResult = transactions
   } else {
     var filteredResults = []
     transactions.transactions.forEach(function(transaction){
-      if(transaction.paintingID === Number(req.query.paintingID)){
-        filteredResults.push(transaction)
+      for (var i = 0; i < searchParams.length; i++){
+        if(transaction[searchParams[i]] === Number(req.query[searchParams[i]])){
+          filteredResults.push(transaction)
+        }
       }
     })
-    Object.defineProperty(transactionResult, 'propertyID', {
-      value: filteredResults
-    })
+    transactionResult["transactions"] = filteredResults
   }
-  console.log(transactionResult)
   res.json(transactionResult);
 });
 
