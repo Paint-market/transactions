@@ -50,6 +50,16 @@ router.get('/', function(req, res, next) {
 });
 
 
+/* POST new listing*/
+router.post('/', function(req, res, next) {
+  var newTransaction = req.body
+  newTransaction["transactionID"] = transactions.transactions.length+1
+  transactions.transactions.push(newTransaction)
+  console.log(transactions)
+  res.json(newTransaction)
+});
+
+
 
 
 module.exports = router;
