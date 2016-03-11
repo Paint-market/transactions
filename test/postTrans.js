@@ -9,15 +9,24 @@ test('post new transaction', function(t){
   .send({
       "buyerID": 6,
       "ownerID": 12,
-      "paintingID": 13,
-      "price": 510
+      "paintingID": 5,
+      "price": 6
     })
   .expect(200)
   .end(function(err, res){
     t.false(err, "No error returned")
-    console.log(res.body)
-    t.equal(res.body.transactionID, 4, "Transaction ID for new object is 4")
+    //console.log(res.body)
+    console.log(res.text)
+    t.equal(res.body.transactionID, 5, "Transaction ID for new object is 4")
     t.end()
   })
 })
 
+// for (var property in newTransaction) {
+//   if (newTransaction.hasOwnProperty(property)) {
+//     console.log('this is fog (' + property + ') for sure. Value: ' + newTransaction[property]);
+//   }
+//   else {
+//     console.log(property); // toString or something else
+//   }
+// }
