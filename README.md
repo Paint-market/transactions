@@ -33,27 +33,27 @@ res:
         {
           transactions: [
             {
-              buyerID: 1,
-              ownerID: 3,
-              paintingID: 1,
+              buyerId: 1,
+              ownerId: 3,
+              paintingId: 1,
               price: 100
             },
             {
-              buyerID: 3,
-              ownerID: 2,
-              paintingID: 3,
+              buyerId: 3,
+              ownerId: 2,
+              paintingId: 3,
               price: 50
             },
             {
-              buyerID: 1,
-              ownerID: 3,
-              paintingID: 3,
+              buyerId: 1,
+              ownerId: 3,
+              paintingId: 3,
               price: 200
             },
             {
-              buyerID: 3,
-              ownerID: 5,
-              paintingID: 9,
+              buyerId: 3,
+              ownerId: 5,
+              paintingId: 9,
               price: 50
             }
           ]
@@ -61,7 +61,7 @@ res:
 
 ## 3. Query a transaction
 
-Returns a transaction by ID, or a list of transactions by buyerID, ownerID or paintingID.
+Returns a transaction by ID, or a list of transactions by buyerId, ownerId or paintingId.
 
  Status 200 OK
 
@@ -71,28 +71,28 @@ Returns a transaction by ID, or a list of transactions by buyerID, ownerID or pa
 
 req: GET /v1/tansactions/1
 
-res:     {transID: 1, ownerID:11, buyerID: 3, paintingID: 62, cost: 500, success: true}
+res:     {transID: 1, ownerId:11, buyerId: 3, paintingId: 62, cost: 500, success: true}
 
 
 
-**Get all transactions for paintingID 3**
+**Get all transactions for paintingId 3**
 
-req:  GET /v1/tansactions/?paintingID=3
+req:  GET /v1/tansactions/?paintingId=3
 
 res:
 
           {
             transactions: [
               {
-                buyerID: 3,
-                ownerID: 2,
-                paintingID: 3,
+                buyerId: 3,
+                ownerId: 2,
+                paintingId: 3,
                 price: 50
               },
               {
-                buyerID: 1,
-                ownerID: 3,
-                paintingID: 3,
+                buyerId: 1,
+                ownerId: 3,
+                paintingId: 3,
                 price: 200
               }
             ]
@@ -100,34 +100,34 @@ res:
 
 **Get all sale & purchase transactions for userID 3**
 
-req:  GET /v1/tansactions/?buyerID=3&ownerID=3
+req:  GET /v1/tansactions/?buyerId=3&ownerId=3
 
 res:
 
           {
             transactions: [
               {
-                buyerID: 1,
-                ownerID: 3,
-                paintingID: 1,
+                buyerId: 1,
+                ownerId: 3,
+                paintingId: 1,
                 price: 100
               },
               {
-                buyerID: 3,
-                ownerID: 2,
-                paintingID: 3,
+                buyerId: 3,
+                ownerId: 2,
+                paintingId: 3,
                 price: 50
               },
               {
-                buyerID: 1,
-                ownerID: 3,
-                paintingID: 3,
+                buyerId: 1,
+                ownerId: 3,
+                paintingId: 3,
                 price: 200
               },
               {
-                buyerID: 3,
-                ownerID: 5,
-                paintingID: 9,
+                buyerId: 3,
+                ownerId: 5,
+                paintingId: 9,
                 price: 50
               }
             ]

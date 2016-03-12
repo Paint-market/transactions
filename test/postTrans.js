@@ -7,11 +7,11 @@ test('post new transaction', function(t){
   request(app)
   .post('/v1/transactions')
   .send({
-      "buyerID": 6,
-      "ownerID": 12,
-      "paintingID": 5,
-      "price": 6
-    })
+    "buyerId": 6,
+    "ownerId": 12,
+    "paintingId": 5,
+    "price": 6
+  })
   .expect(200)
   .end(function(err, res){
     t.false(err, "No error returned")
