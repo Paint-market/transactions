@@ -2,42 +2,11 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs')
 
-var transactions = {}
-
-// var transactions = {
-//   "transactions": [
-//     {
-//       "buyerID": 1,
-//       "ownerID": 3,
-//       "paintingID": 1,
-
-//     },
-//     {
-//       "buyerID": 3,
-//       "ownerID": 2,
-//       "paintingID": 3,
-//       "price": 50
-//     },
-//     {
-//       "buyerID": 1,
-//       "ownerID": 3,
-//       "paintingID": 3,
-//       "price": 200
-//     },
-//     {
-//       "buyerID": 3,
-//       "ownerID": 5,
-//       "paintingID": 9,
-//       "price": 50
-//     }
-// ]}
-
 /* GET transactions list. */
 router.get('/', function(req, res, next) {
   //read object in from file
   fs.readFile('DB.json','utf8', function(err, data){
     transactions = JSON.parse(data)
-
     var transactionResult = {}
     var searchParams = Object.keys(req.query)
     if (searchParams.length === 0){
@@ -58,9 +27,8 @@ router.get('/', function(req, res, next) {
     }
     else {
       res.json(transactionResult);
-  }
+    }
   })
-
 });
 
 
@@ -77,17 +45,13 @@ router.post('/', function(req, res, next) {
       }
     }
     if (viable){
-    newTransaction["transactionID"] = transactions.transactions.length+1
-    transactions.transactions.push(newTransaction)
-    //write file?
-    fs.writeFile('DB.json',JSON.stringify(transactions))
-
-    res.json(newTransaction)
+      newTransaction["transactionID"] = transactions.transactions.length + 1
+      transactions.transactions.push(newTransaction)
+      //write file?
+      fs.writeFile('DB.json',JSON.stringify(transactions))
+      res.json(newTransaction)
     }
   })
 });
-
-
-
 
 module.exports = router;
