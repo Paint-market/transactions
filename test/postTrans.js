@@ -7,9 +7,9 @@ test('post new transaction', function(t){
   request(app)
   .post('/v1/transactions')
   .send({
-      "buyerID": 6,
-      "ownerID": 12,
-      "paintingID": 5,
+      "buyerId": 6,
+      "ownerId": 12,
+      "paintingId": 5,
       "price": 6
     })
   .expect(200)
@@ -17,7 +17,7 @@ test('post new transaction', function(t){
     t.false(err, "No error returned")
     //console.log(res.body)
     console.log(res.text)
-    t.equal(res.body.transactionID, 5, "Transaction ID for new object is 4")
+    t.equal(res.body.transactionId, 5, "Transaction Id for new object is 4")
     t.end()
   })
 })

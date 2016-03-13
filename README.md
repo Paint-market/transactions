@@ -2,7 +2,7 @@
 Version 1.0
 
 
-This transactions API handles the request from the market client of Paint Market, verifies the validity with user client and send response to the controller.
+This transactions API handles the request from the market client of Paint Market, verifies the valIdity with user client and send response to the controller.
 
 ## Dependencies
 
@@ -14,7 +14,7 @@ This transactions API handles the request from the market client of Paint Market
 
 ##1. Create a new transactions
 
-Creates a new transaction JSON object containing the transaction ID, the owner, buyer, painting and price information involved in a transaction. Returns a JSON object with the newly added transaction object.
+Creates a new transaction JSON object containing the transaction Id, the owner, buyer, painting and price information involved in a transaction. Returns a JSON object with the newly added transaction object.
 
 ###Example.
 
@@ -33,27 +33,27 @@ res:
         {
           transactions: [
             {
-              buyerID: 1,
-              ownerID: 3,
-              paintingID: 1,
+              buyerId: 1,
+              ownerId: 3,
+              paintingId: 1,
               price: 100
             },
             {
-              buyerID: 3,
-              ownerID: 2,
-              paintingID: 3,
+              buyerId: 3,
+              ownerId: 2,
+              paintingId: 3,
               price: 50
             },
             {
-              buyerID: 1,
-              ownerID: 3,
-              paintingID: 3,
+              buyerId: 1,
+              ownerId: 3,
+              paintingId: 3,
               price: 200
             },
             {
-              buyerID: 3,
-              ownerID: 5,
-              paintingID: 9,
+              buyerId: 3,
+              ownerId: 5,
+              paintingId: 9,
               price: 50
             }
           ]
@@ -61,73 +61,73 @@ res:
 
 ## 3. Query a transaction
 
-Returns a transaction by ID, or a list of transactions by buyerID, ownerID or paintingID.
+Returns a transaction by Id, or a list of transactions by buyerId, ownerId or paintingId.
 
  Status 200 OK
 
- Error  404  ID not found
+ Error  404  Id not found
 
 ###Examples
 
 req: GET /v1/tansactions/1
 
-res:     {transID: 1, ownerID:11, buyerID: 3, paintingID: 62, cost: 500, success: true}
+res:     {transId: 1, ownerId:11, buyerId: 3, paintingId: 62, cost: 500, success: true}
 
 
 
-**Get all transactions for paintingID 3**
+**Get all transactions for paintingId 3**
 
-req:  GET /v1/tansactions/?paintingID=3
+req:  GET /v1/tansactions/?paintingId=3
 
 res:
 
           {
             transactions: [
               {
-                buyerID: 3,
-                ownerID: 2,
-                paintingID: 3,
+                buyerId: 3,
+                ownerId: 2,
+                paintingId: 3,
                 price: 50
               },
               {
-                buyerID: 1,
-                ownerID: 3,
-                paintingID: 3,
+                buyerId: 1,
+                ownerId: 3,
+                paintingId: 3,
                 price: 200
               }
             ]
           }
 
-**Get all sale & purchase transactions for userID 3**
+**Get all sale & purchase transactions for userId 3**
 
-req:  GET /v1/tansactions/?buyerID=3&ownerID=3
+req:  GET /v1/tansactions/?buyerId=3&ownerId=3
 
 res:
 
           {
             transactions: [
               {
-                buyerID: 1,
-                ownerID: 3,
-                paintingID: 1,
+                buyerId: 1,
+                ownerId: 3,
+                paintingId: 1,
                 price: 100
               },
               {
-                buyerID: 3,
-                ownerID: 2,
-                paintingID: 3,
+                buyerId: 3,
+                ownerId: 2,
+                paintingId: 3,
                 price: 50
               },
               {
-                buyerID: 1,
-                ownerID: 3,
-                paintingID: 3,
+                buyerId: 1,
+                ownerId: 3,
+                paintingId: 3,
                 price: 200
               },
               {
-                buyerID: 3,
-                ownerID: 5,
-                paintingID: 9,
+                buyerId: 3,
+                ownerId: 5,
+                paintingId: 9,
                 price: 50
               }
             ]

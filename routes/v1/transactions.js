@@ -7,27 +7,27 @@ var transactions = {}
 // var transactions = {
 //   "transactions": [
 //     {
-//       "buyerID": 1,
-//       "ownerID": 3,
-//       "paintingID": 1,
+//       "buyerId": 1,
+//       "ownerId": 3,
+//       "paintingId": 1,
 
 //     },
 //     {
-//       "buyerID": 3,
-//       "ownerID": 2,
-//       "paintingID": 3,
+//       "buyerId": 3,
+//       "ownerId": 2,
+//       "paintingId": 3,
 //       "price": 50
 //     },
 //     {
-//       "buyerID": 1,
-//       "ownerID": 3,
-//       "paintingID": 3,
+//       "buyerId": 1,
+//       "ownerId": 3,
+//       "paintingId": 3,
 //       "price": 200
 //     },
 //     {
-//       "buyerID": 3,
-//       "ownerID": 5,
-//       "paintingID": 9,
+//       "buyerId": 3,
+//       "ownerId": 5,
+//       "paintingId": 9,
 //       "price": 50
 //     }
 // ]}
@@ -54,7 +54,7 @@ router.get('/', function(req, res, next) {
       transactionResult["transactions"] = filteredResults
     }
     if(transactionResult.transactions.length == 0){
-      res.status(404).send('invalid search parameters')
+      res.status(404).send('invalId search parameters')
     }
     else {
       res.json(transactionResult);
@@ -77,7 +77,7 @@ router.post('/', function(req, res, next) {
       }
     }
     if (viable){
-    newTransaction["transactionID"] = transactions.transactions.length+1
+    newTransaction["transactionId"] = transactions.transactions.length+1
     transactions.transactions.push(newTransaction)
     //write file?
     fs.writeFile('DB.json',JSON.stringify(transactions))

@@ -14,22 +14,22 @@ test('get v1/transactions/', function(t){
     })
 })
 
-test('get v1/transactions filtered by paintingID', function(t){
+test('get v1/transactions filtered by paintingId', function(t){
   request(app)
       .get('/v1/transactions')
-      .query({paintingID: '3'})
+      .query({paintingId: '3'})
       .expect(200)
       .end(function(err, res){
         t.false(err, 'no error for false')
-        t.equal(res.body.transactions.length, 2, "returns all transaction with painting id 3")
+        t.equal(res.body.transactions.length, 2, "returns all transaction with painting Id 3")
         t.end()
       })
 })
 
-test('get v1/transactions filtered by ownerID', function(t){
+test('get v1/transactions filtered by ownerId', function(t){
 request(app)
       .get('/v1/transactions')
-      .query({ownerID: '3'})
+      .query({ownerId: '3'})
       .expect(200)
       .end(function(err, res){
         t.false(err, 'no error returned')
@@ -38,10 +38,10 @@ request(app)
       })
 })
 
-test('get v1/transactions filtered by buyerID', function(t){
+test('get v1/transactions filtered by buyerId', function(t){
 request(app)
       .get('/v1/transactions')
-      .query({buyerID: '3'})
+      .query({buyerId: '3'})
       .expect(200)
       .end(function(err, res){
         t.false(err, 'no error returned')
@@ -50,10 +50,10 @@ request(app)
       })
 })
 
-test('get v1/transactions filtered by buyerID and ownerID', function(t){
+test('get v1/transactions filtered by buyerId and ownerId', function(t){
 request(app)
       .get('/v1/transactions')
-      .query({buyerID: '3', ownerID: '3'})
+      .query({buyerId: '3', ownerId: '3'})
       .expect(200)
       .end(function(err, res){
         t.false(err, 'no error returned')
@@ -65,11 +65,11 @@ request(app)
 test('if filterd results returns an empty object, throw error ', function(t){
 request(app)
       .get('/v1/transactions')
-      .query({buyerID: '900'})
+      .query({buyerId: '900'})
       .expect(404)
       .end(function(err, res){
         t.false(err, "this is the correct error code")
-        t.deepEqual(res.text, 'invalid search parameters', "the response detected invalid search perameters")
+        t.deepEqual(res.text, 'invalId search parameters', "the response detected invalId search perameters")
         t.end()
       })
 })
