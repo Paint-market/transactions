@@ -4,36 +4,8 @@ var fs = require('fs')
 
 var transactions = {}
 
-// var transactions = {
-//   "transactions": [
-//     {
-//       "buyerID": 1,
-//       "ownerID": 3,
-//       "paintingID": 1,
-
-//     },
-//     {
-//       "buyerID": 3,
-//       "ownerID": 2,
-//       "paintingID": 3,
-//       "price": 50
-//     },
-//     {
-//       "buyerID": 1,
-//       "ownerID": 3,
-//       "paintingID": 3,
-//       "price": 200
-//     },
-//     {
-//       "buyerID": 3,
-//       "ownerID": 5,
-//       "paintingID": 9,
-//       "price": 50
-//     }
-// ]}
-
 /* GET transactions list. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
   //read object in from file
   fs.readFile('DB.json','utf8', function(err, data){
     transactions = JSON.parse(data)
@@ -65,29 +37,36 @@ router.get('/', function(req, res, next) {
 
 
 /* POST new listing*/
-router.post('/', function(req, res, next) {
+router.post('/', function(req, res) {
   fs.readFile('DB.json','utf8', function(err, data){
     transactions = JSON.parse(data)
     var newTransaction = req.body
+    //console.log(transactions, newTransaction)
     var viable = true;
     for (var property in newTransaction) {
       if (isNaN(newTransaction[property]) || typeof newTransaction[property] != 'number') {
         viable = false
         res.status(404).send('This transaction has wrong ' + property + ' value. Value entered is ' + newTransaction[property])
-      }
+      } 
     }
     if (viable){
-    newTransaction["transactionID"] = transactions.transactions.length+1
-    transactions.transactions.push(newTransaction)
-    //write file?
-    fs.writeFile('DB.json',JSON.stringify(transactions))
+      // for (var i=0; i<transactions.transactions.length; i++) {
+      //   var transObj= transactions.transactions[i]
+      //   delete transObj["transactionID"]
+      //   console.log(transObj, newTransaction)
+      //   if (transObj === newTransaction) {
+      //    res.status(404).send("This transaction already exist")
+      //    }
+      // }
+      newTransaction["transactionID"] = transactions.transactions.length+1
+      transactions.transactions.push(newTransaction)
+      //write file?
+      fs.writeFile('DB.json',JSON.stringify(transactions))
 
-    res.json(newTransaction)
+      res.json(newTransaction)
     }
   })
 });
-
-
 
 
 module.exports = router;

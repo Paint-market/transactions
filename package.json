@@ -7,16 +7,17 @@
     "test": "node test/**.js"
   },
   "dependencies": {
-    "body-parser": "^1.13.3",
+    "body-parser": "^1.15.0",
     "debug": "^2.2.0",
     "express": "^4.13.4",
     "fs": "0.0.2",
-    "morgan": "^1.6.1"
+    "morgan": "^1.7.0",
+    "supertest": "^1.2.0",
+    "tape": "^4.5.1"
   },
   "devDependencies": {
     "tape": "^4.5.1",
     "supertest": "^1.2.0"
-
   },
   "description": "[![Stories in Ready](https://badge.waffle.io/Paint-market/transactions.png?label=ready&title=Ready)](https://waffle.io/Paint-market/transactions) # transactions Transactions server for Paint Market",
   "main": "app.js",
