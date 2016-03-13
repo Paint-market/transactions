@@ -6,7 +6,7 @@ var transactions = {
     {
       "buyerId": 1,
       "ownerId": 3,
-      "paintingId": 1,
+      "paintingId": 1
 
     },
     {
@@ -61,7 +61,7 @@ router.post('/', function(req, res, next) {
     }
   }
   if (viableTransaction){
-  newTransaction["transactionID"] = transactions.transactions.length+1
+  newTransaction["transactionId"] = transactions.transactions.length+1
   transactions.transactions.push(newTransaction)
   res.json(newTransaction)
   }
