@@ -53,8 +53,8 @@ router.get('/', function(req, res, next) {
       })
       transactionResult["transactions"] = filteredResults
     }
-    if(transactionResult.transactions.length == 0){
-      res.status(404).send('invalId search parameters')
+    if(transactionResult.transactions.length === 0){
+      res.status(404).send('invalid search parameters')
     }
     else {
       res.json(transactionResult);
